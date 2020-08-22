@@ -1,11 +1,10 @@
 'use strict'
 const { serviceResponse, generateIdRandom } = require('../utils/general')
-const { findRouletteById, saveRoulette } = require('../utils/roulette.utils')
+const { findRouletteById, saveRoulette, getAllRoulettes, changeStatusRoulette } = require('../utils/roulette.utils')
 const createRoulette = async(req, res) => {
   try {
     const idroulette = generateIdRandom()
     const newRoulette = { ...req.body, idroulette }
-    // Guardar nueva ruleta
     await saveRoulette(newRoulette)
     return serviceResponse(200, idroulette, null, true, res)
   } catch (error) {
@@ -18,7 +17,8 @@ const openRoulette = async (req, res) => {
     const { idroulette } = req.params
     const rouletteExists = await findRouletteById(idroulette)
     if (rouletteExists) {
-      // Actualizar con estado true
+      const paramsRoulette = { idroulette, statusNew: true }
+      const updateRoulette = await changeStatusRoulette(paramsRoulette)
       return serviceResponse(200, `Ruleta ${idroulette} abierta`, null, true, res)
     }
     return serviceResponse(400, null, `La ruleta ${idroulette} no se encuentra creada` , true, res)
@@ -33,7 +33,8 @@ const closeRoulette = async (req, res) => {
     const { idroulette } = req.params
     const rouletteExists = await findRouletteById(idroulette)
     if (rouletteExists) {
-      // Actualizar con estado false
+      const paramsRoulette = { idroulette, statusNew: false }
+      const updateRoulette = await changeStatusRoulette(paramsRoulette)
       return serviceResponse(200, `Ruleta ${idroulette} cerrada`, null, true, res)
     }
     return serviceResponse(400, null, `La ruleta ${idroulette} no se encuentra creada` , true, res)
@@ -42,10 +43,9 @@ const closeRoulette = async (req, res) => {
     return serviceResponse(500, null, message, false, res)
   }
 }
-const roulettesList = (req, res) => {
+const roulettesList = async (req, res) => {
   try {
-    // Hacer consulta
-    const listRoulettes = []
+    const listRoulettes = await getAllRoulettes()
     if (listRoulettes.length > 0) {
       return serviceResponse(200, listRoulettes, null, true, res)
     }

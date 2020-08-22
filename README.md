@@ -24,6 +24,9 @@
 
 ### Performance aprox  📊
 
+### Generate brand and Hash git
+#### Generate hash for versioning: in your terminal / powershell / cmd enter command **node server.js git**
+
 
 
 

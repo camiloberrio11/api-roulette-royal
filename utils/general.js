@@ -34,8 +34,7 @@ function createVersionProject () {
   }
 }
 function generateIdRandom () {
-  const currentDate = Date.now()
-  return Math.floor((Math.random() + currentDate) * 100)
+  return Math.floor(Math.random() * 10000)
 }
 module.exports = {
   serviceResponse,

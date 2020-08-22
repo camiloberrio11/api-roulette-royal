@@ -17,8 +17,18 @@ async function saveRoulette (roulette) {
   // guardar ruleta
 }
 
+async function getAllRoulettes () {
+
+}
+
+async function changeStatusRoulette ({ idroulette, statusNew }) {
+  // actualizar de acuerdo al estado
+}
+
 module.exports = {
   getRouletteStatus,
   findRouletteById,
-  saveRoulette
+  saveRoulette,
+  getAllRoulettes,
+  changeStatusRoulette
 }

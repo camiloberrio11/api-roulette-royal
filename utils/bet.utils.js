@@ -34,6 +34,10 @@ function isValidNumberBet (number) {
   return (number > 0 && number <= 37)
 }
 
+async function saveBetOnRoulette (newBet) {
+}
+
 module.exports = {
-  isValidBet
+  isValidBet,
+  saveBetOnRoulette
 }

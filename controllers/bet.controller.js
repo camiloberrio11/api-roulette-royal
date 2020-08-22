@@ -1,6 +1,6 @@
 'use strict'
 const { serviceResponse } = require('../utils/general')
-const { isValidBet } = require('../utils/bet.utils')
+const { isValidBet, saveBetOnRoulette } = require('../utils/bet.utils')
 const { getRouletteStatus } = require('../utils/roulette.utils')
 const betOnRoulette = async (req, res) => {
   try {
@@ -9,7 +9,7 @@ const betOnRoulette = async (req, res) => {
     if (isOpenRoulette) {
       const isValidBetOnRoulette = isValidBet(betPending)
       if (isValidBetOnRoulette) {
-        // Crear apuesta
+        await saveBetOnRoulette(betPending)
         return serviceResponse(200, 'Mucha suerte! Apuesta realizada', null, true, res)
       }
     }

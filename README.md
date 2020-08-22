@@ -1,6 +1,6 @@
 # 🃏♥️♣️ API ROULETTE 🎰🎩♦️
 
-### Linter
+### Linter ☑️💥
 - StandarJs (Use for Nodejs - https://standardjs.com/)
 
 ### Characteristics 🔨

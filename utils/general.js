@@ -6,7 +6,7 @@ function serviceResponse (codeHttp, responseData, error, isSuccess, res) {
   return res.status(codeHttp).json({
     Errors: [error],
     Result: responseData,
-    isSuccess
+    IsSuccess: isSuccess
   })
 }
 function getVersionProject () {
@@ -33,8 +33,13 @@ function createVersionProject () {
     fs.writeFileSync(path.join(__dirname, '../public/version.json'), JSON.stringify(info))
   }
 }
+function generateIdRandom () {
+  const currentDate = Date.now()
+  return Math.floor((Math.random() + currentDate) * 100)
+}
 module.exports = {
   serviceResponse,
   getVersionProject,
-  createVersionProject
+  createVersionProject,
+  generateIdRandom
 }

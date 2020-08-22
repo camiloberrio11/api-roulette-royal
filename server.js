@@ -4,7 +4,6 @@ const path = require('path')
 const routes = require('./routes/routes')
 const portSecure = process.env.PORT || '8094'
 const { startPageApi } = require('./controllers/startpage.controller')
-
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))

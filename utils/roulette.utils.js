@@ -9,6 +9,16 @@ async function getRouletteStatus ({ idRoulette }) {
   }
 }
 
+async function findRouletteById (idroulette = null) {
+  // Hacer consulta por id
+}
+
+async function saveRoulette (roulette) {
+  // guardar ruleta
+}
+
 module.exports = {
-  getRouletteStatus
+  getRouletteStatus,
+  findRouletteById,
+  saveRoulette
 }

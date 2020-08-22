@@ -1,12 +1,10 @@
 'use strict'
-const { serviceResponse, generateIdRandom } = require('../utils/general')
+const { serviceResponse } = require('../utils/general')
 const { findRouletteById, saveRoulette, getAllRoulettes, changeStatusRoulette } = require('../utils/roulette.utils')
-const createRoulette = async(req, res) => {
+const createRoulette = async (req, res) => {
   try {
-    const idroulette = generateIdRandom()
-    const newRoulette = { ...req.body, idroulette }
-    await saveRoulette(newRoulette)
-    return serviceResponse(200, idroulette, null, true, res)
+    const idNewRoulette = await saveRoulette()
+    return serviceResponse(200, idNewRoulette, null, true, res)
   } catch (error) {
     const { message } = error
     return serviceResponse(500, null, message, false, res)
@@ -18,10 +16,10 @@ const openRoulette = async (req, res) => {
     const rouletteExists = await findRouletteById(idroulette)
     if (rouletteExists) {
       const paramsRoulette = { idroulette, statusNew: true }
-      const updateRoulette = await changeStatusRoulette(paramsRoulette)
+      await changeStatusRoulette(paramsRoulette)
       return serviceResponse(200, `Ruleta ${idroulette} abierta`, null, true, res)
     }
-    return serviceResponse(400, null, `La ruleta ${idroulette} no se encuentra creada` , true, res)
+    return serviceResponse(400, null, `La ruleta ${idroulette} no se encuentra creada`, true, res)
   } catch (error) {
     const { message } = error
     return serviceResponse(500, null, message, false, res)
@@ -34,10 +32,10 @@ const closeRoulette = async (req, res) => {
     const rouletteExists = await findRouletteById(idroulette)
     if (rouletteExists) {
       const paramsRoulette = { idroulette, statusNew: false }
-      const updateRoulette = await changeStatusRoulette(paramsRoulette)
+      await changeStatusRoulette(paramsRoulette)
       return serviceResponse(200, `Ruleta ${idroulette} cerrada`, null, true, res)
     }
-    return serviceResponse(400, null, `La ruleta ${idroulette} no se encuentra creada` , true, res)
+    return serviceResponse(400, null, `La ruleta ${idroulette} no se encuentra creada`, true, res)
   } catch (error) {
     const { message } = error
     return serviceResponse(500, null, message, false, res)

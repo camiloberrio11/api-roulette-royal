@@ -5,7 +5,7 @@ const querysDB = [
     (
         idroulette integer,
         status boolean,
-        date_created date,
+        date_created date DEFAULT NOW(),
         CONSTRAINT pk_idroulette PRIMARY KEY (idroulette)
     );`
   },
@@ -16,7 +16,7 @@ const querysDB = [
         isred boolean,
         isblack boolean,
         number_bet smallint,
-        date_created date,
+        date_created date DEFAULT NOW(),
         money smallint,
         userid character varying(60),
         idroulette integer,

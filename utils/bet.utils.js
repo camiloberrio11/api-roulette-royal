@@ -1,4 +1,7 @@
 'use strict'
+const { generateIdRandom } = require('./general')
+const { conexionDB } = require('../database/database')
+const { scriptCreateBet } = require('../database/sql/betOnRoulette/betOnRoulette.scripts')
 
 function isValidBet (betPending) {
   try {
@@ -35,6 +38,10 @@ function isValidNumberBet (number) {
 }
 
 async function saveBetOnRoulette (newBet) {
+  const idBet = generateIdRandom()
+  const queryCreateBet = scriptCreateBet({ ...newBet, idBet })
+  const saveBet = await conexionDB.query(queryCreateBet)
+  return saveBet
 }
 
 module.exports = {

@@ -15,7 +15,6 @@ const runScriptsInit = async () => {
   for (const { script } of querysDB) {
     await conexionDB.query(script)
   }
-  await conexionDB.end()
 }
 
 module.exports = {

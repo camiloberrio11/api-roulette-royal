@@ -4,7 +4,8 @@ const { isValidBet, saveBetOnRoulette } = require('../utils/bet.utils')
 const { getRouletteStatus } = require('../utils/roulette.utils')
 const betOnRoulette = async (req, res) => {
   try {
-    const betPending = req.body
+    const { userid } = req.headers
+    const betPending = { ...req.body, userid }
     const isOpenRoulette = await getRouletteStatus(betPending)
     if (isOpenRoulette) {
       const isValidBetOnRoulette = isValidBet(betPending)

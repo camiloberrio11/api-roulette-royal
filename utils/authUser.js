@@ -1,4 +1,5 @@
 'use strict'
+
 const { serviceResponse } = require('../utils/general')
 const validateUserInHeader = (req, res, next) => {
   try {

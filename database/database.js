@@ -3,7 +3,7 @@ const { Pool } = require('pg')
 require('dotenv').config()
 const querysDB = require('./sql/initScripts')
 
-const conexionDB = new Pool({
+const connectionDB = new Pool({
   host: process.env.HOSTDB,
   user: process.env.USERDB,
   password: process.env.PASSDB,
@@ -13,11 +13,11 @@ const conexionDB = new Pool({
 
 const runScriptsInit = async () => {
   for (const { script } of querysDB) {
-    await conexionDB.query(script)
+    await connectionDB.query(script)
   }
 }
 
 module.exports = {
-  conexionDB,
+  connectionDB,
   runScriptsInit
 }

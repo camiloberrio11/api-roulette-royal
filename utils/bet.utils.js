@@ -1,6 +1,6 @@
 'use strict'
 const { generateIdRandom } = require('./general')
-const { conexionDB } = require('../database/database')
+const { connectionDB } = require('../database/database')
 const { scriptCreateBet } = require('../database/sql/betOnRoulette/betOnRoulette.scripts')
 
 function isValidBet (betPending) {
@@ -40,7 +40,7 @@ function isValidNumberBet (number) {
 async function saveBetOnRoulette (newBet) {
   const idBet = generateIdRandom()
   const queryCreateBet = scriptCreateBet({ ...newBet, idBet })
-  const saveBet = await conexionDB.query(queryCreateBet)
+  const saveBet = await connectionDB.query(queryCreateBet)
   return saveBet
 }
 

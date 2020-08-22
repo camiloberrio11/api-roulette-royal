@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test-lint": "standard && node node.js",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +15,6 @@
     "git-repo-info": "^2.1.1"
   },
   "devDependencies": {
-    "morgan": "^1.10.0"
+    "standard": "^14.3.4"
   }
 }

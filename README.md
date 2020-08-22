@@ -1,4 +1,4 @@
-# API ROULETTE
+# 🃏♥️♣️ API ROULETTE 🎰🎩♦️
 
 ### Linter
 - StandarJs (Use for Nodejs - https://standardjs.com/)
@@ -19,7 +19,7 @@
 #### 4. Route start - Get deployed version (GET: https://api-roulette-royal.herokuapp.com/)
 
 
-### Performance aprox  🚀
+### Performance aprox  📊
 
 
 

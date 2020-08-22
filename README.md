@@ -24,6 +24,10 @@
 
 ### Performance aprox  📊
 
+- https://api-roulette-royal.herokuapp.com/api/addroulette (Users 5 - Request 1000) -> 12 req/seg
+- https://api-roulette-royal.herokuapp.com/api/roulettes (Users 5 - Request 1000) -> 11 req/seg
+
+
 ### Generate brand and Hash git
 #### Generate hash for versioning: in your terminal / powershell / cmd enter command **node server.js git**
 

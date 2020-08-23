@@ -19,6 +19,7 @@
 #### 4. Route - update status (closeroulette) roulete(): boolean - (PUT/: https://api-roulette-royal.herokuapp.com/api/closeroulette/:idroulette)
 #### 5. Route - List of all roulettes with their status - (GET: https://api-roulette-royal.herokuapp.com/api/roulettes)
 #### 6. Route - Betting service on a number and a color, or one of the two options - (POST: https://api-roulette-royal.herokuapp.com/api/betroulette)
+#### 7. Route - Get bets by roulette id - (GET: https://api-roulette-royal.herokuapp.com/api/bets/:idroulette)
 
 
 

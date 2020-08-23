@@ -19,16 +19,21 @@ async function saveRoulette () {
   return idRoulette
 }
 async function getAllRoulettes () {
-  const listRoulettes = await Roulette.find({}, { id: false, __v: false })
+  const listRoulettes = await Roulette.find({}, { _id: false, __v: false })
   return listRoulettes
 }
 async function changeStatusRoulette ({ idroulette, statusNew }) {
   const newRouletteUpdated = await Roulette.updateOne({ idroulette: +idroulette }, { status: statusNew })
   return newRouletteUpdated
 }
+async function findRouletteById (idroulette) {
+  const oneRoulette = await Roulette.findOne({ idroulette: +idroulette })
+  return oneRoulette
+}
 module.exports = {
   getRouletteStatus,
   saveRoulette,
   getAllRoulettes,
-  changeStatusRoulette
+  changeStatusRoulette,
+  findRouletteById
 }

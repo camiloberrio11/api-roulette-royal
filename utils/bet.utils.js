@@ -1,7 +1,5 @@
 'use strict'
 const { generateIdRandom } = require('./general')
-const { connectionDB } = require('../database/database')
-const Roulette = require('../models/Roulette')
 const BetOnRoulette = require('../models/BetOnRoulette')
 
 function isValidBet (betPending) {
@@ -33,11 +31,9 @@ function isValidNumberOrColor ({ isRed = false, isBlack = false, betNumber = nul
     return false
   }
 }
-
 function isValidNumberBet (number) {
   return (number > 0 && number <= 37)
 }
-
 async function saveBetOnRoulette (newBet) {
   const idBet = generateIdRandom()
   const dateCurrent = new Date().toISOString()
@@ -46,8 +42,13 @@ async function saveBetOnRoulette (newBet) {
   const betRoulettedSaved = await newBetBuild.save()
   return betRoulettedSaved
 }
+async function getBetsByRouletteId (idroulette) {
+  const bets = await BetOnRoulette.find({ idroulette: +idroulette }, { _id: false, __v: false })
+  return bets
+}
 
 module.exports = {
   isValidBet,
-  saveBetOnRoulette
+  saveBetOnRoulette,
+  getBetsByRouletteId
 }

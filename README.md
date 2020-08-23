@@ -28,9 +28,9 @@
 - https://api-roulette-royal.herokuapp.com/api/roulettes (Users 5 - Request 1000) -> 11 req/seg
 
 
-### Optinal
+### Optinal Branch 🍃🍀
 - There is a branch called "mongo" in which this application is built and the same routes but storing the data in a non-relational database MongoDB
-This branch is displayed in the url (), you can perfectly point to it to save your bets in MongoDB
+This branch is displayed in the url ( https://api-roulette-royal-mongodb.herokuapp.com/ ), you can perfectly point to it to save your bets in MongoDB
 
 
 

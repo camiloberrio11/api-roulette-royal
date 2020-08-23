@@ -28,9 +28,9 @@
 - https://api-roulette-royal.herokuapp.com/api/roulettes (Users 5 - Request 1000) -> 11 req/seg
 
 
-### Generate brand and Hash git
-#### Generate hash for versioning: in your terminal / powershell / cmd enter command **node server.js git**
-
+### Optinal
+- There is a branch called "mongo" in which this application is built and the same routes but storing the data in a non-relational database MongoDB
+This branch is displayed in the url (), you can perfectly point to it to save your bets in MongoDB
 
 
 

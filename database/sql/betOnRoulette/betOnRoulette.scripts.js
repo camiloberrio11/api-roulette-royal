@@ -6,6 +6,10 @@ const scriptCreateBet = (bet) => {
   VALUES (${+idBet}, ${Boolean(isRed)}, ${Boolean(isBlack)}, ${betNumber}, ${+money}, '${userid}', ${+idroulette})
   `
 }
+const scriptGetBetsRouletteId = (idRoulette) => {
+  return `SELECT * FROM bet_on_roulette WHERE idroulette =${+idRoulette}`
+}
 module.exports = {
-  scriptCreateBet
+  scriptCreateBet,
+  scriptGetBetsRouletteId
 }

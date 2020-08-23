@@ -1,23 +1,21 @@
 'use strict'
-const { Pool } = require('pg')
+const { connect } = require('mongoose')
 require('dotenv').config()
-const querysDB = require('./sql/initScripts')
-
-const connectionDB = new Pool({
-  host: process.env.HOSTDB,
-  user: process.env.USERDB,
-  password: process.env.PASSDB,
-  database: process.env.NAMEDB,
-  port: process.env.PORTDB
-})
-
-const runScriptsInit = async () => {
-  for (const { script } of querysDB) {
-    await connectionDB.query(script)
+const parametersBD = {
+  useNewUrlParser: true,
+  poolSize: 5,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  useUnifiedTopology: true
+}
+async function connectDatabase () {
+  try {
+    await connect(process.env.HOSTDB, parametersBD)
+  } catch (error) {
+    const { message } = error
+    console.log(`Error database ${message}`)
   }
 }
-
 module.exports = {
-  connectionDB,
-  runScriptsInit
+  connectDatabase
 }
